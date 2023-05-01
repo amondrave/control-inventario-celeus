@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +23,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "worker")
+@Table(name = "worker", 
+	uniqueConstraints = @UniqueConstraint(name = "UniqueIdentificationAndDocument", 
+	columnNames = {"identification","fk_document_type"}))
 public class Worker {
 
 	@Id
