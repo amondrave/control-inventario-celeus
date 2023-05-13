@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 
 import com.celeus.controlinventario.domain.dto.UserDto;
 
-@Repository
 public interface UserConnector {
 
 	UserDto getUserByEmail(String email);
