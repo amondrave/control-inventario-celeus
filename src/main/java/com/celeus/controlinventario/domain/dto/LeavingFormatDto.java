@@ -40,7 +40,7 @@ public class LeavingFormatDto {
 	
 	private String reason;
 	
-	// atribustos para la proyeccion
+	// atributos para la proyeccion
 	
 	private String nameActive;
 	

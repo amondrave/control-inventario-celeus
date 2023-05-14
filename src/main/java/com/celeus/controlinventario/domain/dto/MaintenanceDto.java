@@ -1,6 +1,7 @@
 package com.celeus.controlinventario.domain.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.celeus.controlinventario.persistence.entity.ActiveType;
 import com.celeus.controlinventario.persistence.entity.User;
@@ -27,5 +28,11 @@ public class MaintenanceDto {
 	private MaintenanceTypeDto maintenanceTypeDto;
 	
 	private UserDto userDto;
+	
+	// Atributos para la proyeccion
+	
+	List<ObservationDto> listObservation;
+	
+	List<EvidenceDto> listEvidence;
 	
 }

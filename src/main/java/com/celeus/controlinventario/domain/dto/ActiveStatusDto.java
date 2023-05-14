@@ -24,7 +24,7 @@ public class ActiveStatusDto {
 	
 	private ActiveDto activeDto;
 	
-	private ActiveTypeDto activeTypeDto;
+	private ActiveTypeStatusDto activeTypeStatusDto;
 	
 	private String observation;
 }
