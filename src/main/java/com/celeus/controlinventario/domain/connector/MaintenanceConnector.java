@@ -11,4 +11,9 @@ public interface MaintenanceConnector {
 
 	List<Maintenance> getAllMaintenance();
 	
+	Maintenance createMaintenance(Maintenance maintenance);
+	
+	Maintenance updateMaintenance(Maintenance maintenance);
+	
+	
 }
