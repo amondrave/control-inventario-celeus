@@ -31,6 +31,7 @@ public class ActiveMapper {
 				.code(active.getCode())
 				.userDto(userMapper.entityToDto(active.getUser()))
 				.enabled(active.getEnabled())
+				.image(active.getImage())
 				.build();
 	}
 	
@@ -48,6 +49,7 @@ public class ActiveMapper {
 				.code(activeDto.getCode())
 				.user(userMapper.dtoToEntity(activeDto.getUserDto()))
 				.enabled(activeDto.getEnabled())
+				.image(activeDto.getImage())
 				.build();
 	}
 

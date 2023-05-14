@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.celeus.controlinventario.domain.connector.ActiveConnector;
 import com.celeus.controlinventario.domain.dto.ActiveDto;

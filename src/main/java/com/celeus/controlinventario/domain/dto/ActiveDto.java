@@ -54,6 +54,10 @@ public class ActiveDto {
 	
 	
 	private Boolean enabled;
+	
  
+	private String imageBase;
+	
+	
 	
 }
