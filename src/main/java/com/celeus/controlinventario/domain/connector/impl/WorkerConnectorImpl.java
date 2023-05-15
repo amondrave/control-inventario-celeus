@@ -24,11 +24,12 @@ public class WorkerConnectorImpl implements WorkerConnector {
 	@Override
 	public Worker getWorkerByIdentifcationAndDocument(String identification, Long documentTypeId) {
 		// TODO Auto-generated method stub
-		Worker worker = workerRepository.findWorkerByIdentificationAndDocumentType(identification, documentTypeId);
-		if(worker == null) {
-			new NoSuchElementException("No se encontró el Trabajador con identificación " + identification);
+		try {
+			Worker worker = workerRepository.findWorkerByIdentificationAndDocumentType(identification, documentTypeId);
+			return worker;
+		} catch (Exception e) {
+			throw new NoSuchElementException("No se encontró el Trabajador con identificación " + identification);
 		}
-		return worker;
 	}
 
 	@Override

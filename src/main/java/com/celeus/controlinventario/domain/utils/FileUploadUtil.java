@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Base64;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,6 +41,18 @@ public class FileUploadUtil {
     	    System.out.println("No se pudo borrar la imagen.");
     	}
 
+    }
+    
+    public static String getImageBaseFormat(String filename) {
+		try {
+            File file = new File(filename);
+            byte[] fileContent = FileUploadUtil.readFileToByteArray(file);
+            String base64String = Base64.getEncoder().encodeToString(fileContent);
+            return base64String;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return null;
     }
 
 }

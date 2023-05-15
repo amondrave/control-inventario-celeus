@@ -45,11 +45,13 @@ public class ObservationConnectorImpl implements ObservationConnector {
 	@Override
 	public Observation getObservationById(Long id) {
 		// TODO Auto-generated method stub
-		Observation observation = observationRepository.getReferenceById(id);
-		if(observation == null) {
-			new NoSuchElementException("No se encontró la observacion con ID " + id);
+		try {
+			Observation observation = observationRepository.getReferenceById(id);
+			return observation;
+		} catch (Exception e) {
+			throw new NoSuchElementException("No se encontró la observacion con ID " + id);
 		}
-		return observation;
+		
 	}
 	
 
