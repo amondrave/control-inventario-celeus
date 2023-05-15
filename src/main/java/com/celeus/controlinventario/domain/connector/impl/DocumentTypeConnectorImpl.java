@@ -1,6 +1,9 @@
 package com.celeus.controlinventario.domain.connector.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
@@ -45,5 +48,14 @@ public class DocumentTypeConnectorImpl implements DocumentTypeConnector {
 				})
 				.collect(Collectors.toList());
 				
+	}
+
+
+
+	@Override
+	public DocumentType getDocumenTypeById(Long id) {
+			return documentTypeRepository.findById(id)
+					.orElseThrow(() -> new NoSuchElementException("No se encontró el tipo de documento con ID " + id));
+		
 	}
 }

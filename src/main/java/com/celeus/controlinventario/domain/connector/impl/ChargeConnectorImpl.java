@@ -1,6 +1,7 @@
 package com.celeus.controlinventario.domain.connector.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
@@ -42,6 +43,18 @@ public class ChargeConnectorImpl implements ChargeConnector{
 					return chargeDto;
 				})
 				.collect(Collectors.toList());
+	}
+
+
+
+	@Override
+	public ChargeDto getChargeById(Long id) {
+		// TODO Auto-generated method stub
+		try {
+			return chargeMapper.entityToDto(chargeRepository.getReferenceById(id));
+		} catch (Exception e) {
+			throw new NoSuchElementException("No se encontro el cargo");
+		}
 	}
 
 }

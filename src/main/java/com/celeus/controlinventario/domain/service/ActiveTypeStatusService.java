@@ -7,4 +7,7 @@ import com.celeus.controlinventario.domain.dto.ActiveTypeStatusDto;
 public interface ActiveTypeStatusService {
 	
 	List<ActiveTypeStatusDto> getAllActiveTypeStatus();
+	
+	ActiveTypeStatusDto getActiveTypeStatusById(Long id);
+	
 }

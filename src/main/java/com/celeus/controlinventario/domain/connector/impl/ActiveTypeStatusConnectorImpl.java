@@ -1,6 +1,7 @@
 package com.celeus.controlinventario.domain.connector.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +27,17 @@ public class ActiveTypeStatusConnectorImpl implements ActiveTypeStatusConnector 
 	public List<ActiveTypeStatus> getAllActiveTypeStatus() {
 		// TODO Auto-generated method stub
 		return activeTypeStatusRepository.findAll();
+	}
+
+
+
+	@Override
+	public ActiveTypeStatus getActiveTypeStatusById(Long id) {
+		try {
+			return activeTypeStatusRepository.getReferenceById(id);
+		} catch (Exception e) {
+			throw new NoSuchElementException("No se puede encontrar");
+		}
 	}
 
 }

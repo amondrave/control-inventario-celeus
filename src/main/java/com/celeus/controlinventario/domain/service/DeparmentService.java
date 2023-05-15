@@ -7,5 +7,7 @@ import com.celeus.controlinventario.domain.dto.DeparmentDto;
 public interface DeparmentService {
 	
 	List<DeparmentDto> getAllDeparment();
+	
+	DeparmentDto getDeparmentById(Long id);
 
 }

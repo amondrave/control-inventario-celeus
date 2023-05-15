@@ -47,6 +47,7 @@ public class ActiveConnectorImpl implements ActiveConnector{
 	
 	private String createCodeActive(ActiveTypeDto activeTypeDto) {
 		StringBuilder code = new StringBuilder(activeTypeDto.getSigle());
+		System.out.println("sigle: "+ activeTypeDto.getSigle());
 		Long nextId = activeRepository.getNextId();
 		code.append(nextId);
 		return code.toString();

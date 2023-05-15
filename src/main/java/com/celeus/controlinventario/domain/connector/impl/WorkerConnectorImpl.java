@@ -44,4 +44,13 @@ public class WorkerConnectorImpl implements WorkerConnector {
 		return workerRepository.findAll();
 	}
 
+	@Override
+	public Worker getWorkerById(Long id) {
+		try {
+			return workerRepository.getReferenceById(id);
+		} catch (Exception e) {
+			throw new NoSuchElementException("No se encuentra trabajador");
+		}		
+	}
+
 }

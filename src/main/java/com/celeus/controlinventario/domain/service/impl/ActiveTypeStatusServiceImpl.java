@@ -47,4 +47,12 @@ public class ActiveTypeStatusServiceImpl implements ActiveTypeStatusService {
 				.collect(Collectors.toList());
 	}
 
+
+
+	@Override
+	public ActiveTypeStatusDto getActiveTypeStatusById(Long id) {
+		// TODO Auto-generated method stub
+		return activeTypeStatusMapper.entityToDto(activeTypeStatusConnector.getActiveTypeStatusById(id));
+	}
+
 }

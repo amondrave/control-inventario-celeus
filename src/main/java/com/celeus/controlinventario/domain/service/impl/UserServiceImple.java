@@ -32,8 +32,7 @@ public class UserServiceImple implements UserService{
 
 	@Override
 	public UserDto getUserById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userConnector.getUserById(id);
 	}
 
 }

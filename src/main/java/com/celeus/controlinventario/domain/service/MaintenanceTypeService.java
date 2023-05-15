@@ -7,5 +7,7 @@ import com.celeus.controlinventario.domain.dto.MaintenanceTypeDto;
 public interface MaintenanceTypeService {
 	
 	List<MaintenanceTypeDto> getAllMaintenanceType();
+	
+	MaintenanceTypeDto getMaintenanceType(Long id);
 
 }

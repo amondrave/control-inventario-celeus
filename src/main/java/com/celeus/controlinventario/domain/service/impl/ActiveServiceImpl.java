@@ -14,7 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.celeus.controlinventario.domain.connector.ActiveConnector;
 import com.celeus.controlinventario.domain.dto.ActiveDto;
+import com.celeus.controlinventario.domain.dto.ActiveTypeDto;
+import com.celeus.controlinventario.domain.dto.UserDto;
 import com.celeus.controlinventario.domain.service.ActiveService;
+import com.celeus.controlinventario.domain.service.ActiveTypeService;
+import com.celeus.controlinventario.domain.service.UserService;
 import com.celeus.controlinventario.domain.utils.FileUploadUtil;
 import com.celeus.controlinventario.domain.utils.Utils;
 import com.celeus.controlinventario.persistence.entity.Active;
@@ -29,15 +33,22 @@ public class ActiveServiceImpl implements ActiveService {
 	
 	private final ActiveMapper activeMapper;
 	
+	private final ActiveTypeService activeTypeService;
+	
+	private final UserService userService;
+	
 	private final Environment environment;
 	
 	private static final String IMAGE_FOLDER_URL = "image.upload.directory";
 	
 
-	public ActiveServiceImpl(ActiveConnector activeConnector, ActiveMapper activeMapper, Environment environment) {
+	public ActiveServiceImpl(ActiveConnector activeConnector, ActiveMapper activeMapper, ActiveTypeService activeTypeService ,
+		UserService userService	,Environment environment) {
 		super();
 		this.activeConnector = activeConnector;
 		this.activeMapper = activeMapper;
+		this.activeTypeService = activeTypeService;
+		this.userService = userService;
 		this.environment = environment;
 	}
 
@@ -62,15 +73,17 @@ public class ActiveServiceImpl implements ActiveService {
 		// TODO Auto-generated method stub
 		
 		setUpImage(activeDto,image);
-		
+		ActiveTypeDto activeTypeDto = activeTypeService.getActiveTypeById(activeDto.getActiveTypeDto().getId());
+		UserDto userDto = userService.getUserById(activeDto.getUserDto().getId());
+		activeDto.setActiveTypeDto(activeTypeDto);
+		activeDto.setUserDto(userDto);
+		activeDto.setEnabled(true);
 		return activeMapper.entityToDto(activeConnector.createActive(activeDto));
 	}
 	
 	private void setUpImage(ActiveDto activeDto,  MultipartFile image) throws IOException {
 		String fileName = Utils.cleanPath(image.getOriginalFilename());
-		
 		String folder = environment.getProperty(IMAGE_FOLDER_URL);
-		
 		FileUploadUtil.saveFile(folder, fileName, image);
 		// Buscar ActiveType para setearlo en el dto
 		
@@ -85,6 +98,11 @@ public class ActiveServiceImpl implements ActiveService {
 		ActiveDto acDto = getActiveById(activeDto.getId());
 		FileUploadUtil.deleteImage(acDto.getImage());
 		setUpImage(activeDto,image);
+		ActiveTypeDto activeTypeDto = activeTypeService.getActiveTypeById(activeDto.getActiveTypeDto().getId());
+		UserDto userDto = userService.getUserById(activeDto.getUserDto().getId());
+		activeDto.setActiveTypeDto(activeTypeDto);
+		activeDto.setUserDto(userDto);
+		activeDto.setEnabled(true);
 		return activeMapper.entityToDto(activeConnector.updateActive(activeDto));
 	}
 

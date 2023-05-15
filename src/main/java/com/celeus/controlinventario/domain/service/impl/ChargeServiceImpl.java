@@ -29,4 +29,12 @@ public class ChargeServiceImpl implements ChargeService{
 		return chargeConnector.getAllCharge();
 	}
 
+
+
+	@Override
+	public ChargeDto getChargeById(Long id) {
+		// TODO Auto-generated method stub
+		return chargeConnector.getChargeById(id);
+	}
+
 }

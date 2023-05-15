@@ -11,4 +11,6 @@ public interface WorkerService {
 	WorkerDto createWorker(WorkerDto workerDto);
 	
 	List<WorkerDto> getAllWorker();
+	
+	WorkerDto getWorkedById(Long id);
 }

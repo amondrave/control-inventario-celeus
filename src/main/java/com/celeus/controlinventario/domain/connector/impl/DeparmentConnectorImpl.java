@@ -1,6 +1,7 @@
 package com.celeus.controlinventario.domain.connector.impl;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
@@ -42,6 +43,17 @@ public class DeparmentConnectorImpl implements DeparmentConnector{
 					return deparmentDto;
 				})
 				.collect(Collectors.toList());
+	}
+
+
+
+	@Override
+	public DeparmentDto getDeparmentById(Long id) {
+		try {
+			return deparmentMapper.entityToDto(deparmentRepository.getReferenceById(id));
+		} catch (Exception e) {
+			throw new NoSuchElementException("No se pudo encontrar");
+		}
 	}
 
 }

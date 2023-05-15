@@ -28,4 +28,12 @@ public class DeparmentServiceImpl implements DeparmentService {
 		return deparmentConnector.getAllDeparment();
 	}
 
+
+
+	@Override
+	public DeparmentDto getDeparmentById(Long id) {
+		// TODO Auto-generated method stub
+		return deparmentConnector.getDeparmentById(id);
+	}
+
 }

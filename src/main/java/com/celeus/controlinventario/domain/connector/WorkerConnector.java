@@ -16,5 +16,5 @@ public interface WorkerConnector {
    
    List<Worker> getAllWorker();
    
-    
+   Worker getWorkerById(Long id);
 }

@@ -7,5 +7,7 @@ import com.celeus.controlinventario.persistence.entity.ActiveTypeStatus;
 public interface ActiveTypeStatusConnector {
 	
 	List<ActiveTypeStatus> getAllActiveTypeStatus();
+	
+	ActiveTypeStatus getActiveTypeStatusById(Long id);
 
 }

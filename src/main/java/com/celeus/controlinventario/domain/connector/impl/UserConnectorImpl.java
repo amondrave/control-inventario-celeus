@@ -1,5 +1,6 @@
 package com.celeus.controlinventario.domain.connector.impl;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
@@ -34,12 +35,12 @@ public class UserConnectorImpl implements UserConnector{
 
 	@Override
 	public UserDto getUserById(Long id) {
-		// TODO Auto-generated method stub
-		User user = userRepository.getReferenceById(id);
-		if(user != null) {
+		try {
+			User user = userRepository.getReferenceById(id);
 			return userMapper.entityToDto(user);
+		} catch (Exception e) {
+			throw new NoSuchElementException("No se pudo encontrar el usuario. ");
 		}
-		return null;
 	}
 
 }

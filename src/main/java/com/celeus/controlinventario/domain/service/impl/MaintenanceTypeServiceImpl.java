@@ -48,4 +48,12 @@ public class MaintenanceTypeServiceImpl implements MaintenanceTypeService {
 				.collect(Collectors.toList());
 	}
 
+
+
+	@Override
+	public MaintenanceTypeDto getMaintenanceType(Long id) {
+		// TODO Auto-generated method stub
+		return maintenanceTypeMapper.entityToDto(maintenanceTypeConnector.getMaintenanceTypeById(id));
+	}
+
 }

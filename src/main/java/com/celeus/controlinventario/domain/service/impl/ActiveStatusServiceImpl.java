@@ -1,12 +1,16 @@
 package com.celeus.controlinventario.domain.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.celeus.controlinventario.domain.connector.ActiveStatusConnector;
 import com.celeus.controlinventario.domain.dto.ActiveStatusDto;
+import com.celeus.controlinventario.domain.service.ActiveService;
 import com.celeus.controlinventario.domain.service.ActiveStatusService;
+import com.celeus.controlinventario.domain.service.ActiveTypeStatusService;
+import com.celeus.controlinventario.persistence.entity.ActiveStatus;
 import com.celeus.controlinventario.persistence.mapper.ActiveStatusMapper;
 
 
@@ -18,42 +22,63 @@ public class ActiveStatusServiceImpl implements ActiveStatusService{
 	
 	private final ActiveStatusMapper activeStatusMapper;
 	
+	private final ActiveService activeService;
+	
+	private final ActiveTypeStatusService activeTypeStatusService;
+	
 	
 
-	public ActiveStatusServiceImpl(ActiveStatusConnector activeStatusConnector, ActiveStatusMapper activeStatusMapper) {
+	public ActiveStatusServiceImpl(ActiveStatusConnector activeStatusConnector, ActiveStatusMapper activeStatusMapper,
+			ActiveService activeService,ActiveTypeStatusService activeTypeStatusService ) {
 		super();
 		this.activeStatusConnector = activeStatusConnector;
 		this.activeStatusMapper = activeStatusMapper;
+		this.activeService = activeService;
+		this.activeTypeStatusService = activeTypeStatusService;
 	}
 
 	@Override
 	public List<ActiveStatusDto> getAllActiveStatus() {
-		// TODO Auto-generated method stub
+		List<ActiveStatus> list = activeStatusConnector.getAllActiveStatus();
+		if(!list.isEmpty())
+			return mapperList(list);
 		return null;
 	}
 
 	@Override
 	public List<ActiveStatusDto> getAllActiveStatusByActive(Long idActive) {
-		// TODO Auto-generated method stub
+		List<ActiveStatus> list = activeStatusConnector.getAllActiveStatusByActive(idActive);
+		if(!list.isEmpty())
+			return mapperList(list);
 		return null;
+	}
+	
+	private List<ActiveStatusDto> mapperList(List<ActiveStatus> list){
+		return list.stream()
+				.map( ac -> {
+					ActiveStatusDto activeStatusDto = activeStatusMapper.entityToDto(ac);
+					return activeStatusDto;
+				})
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public ActiveStatusDto createActiveStatus(ActiveStatusDto ActiveStatusDto) {
 		// TODO Auto-generated method stub
-		return null;
+		ActiveStatusDto.setActiveDto(activeService.getActiveById(ActiveStatusDto.getActiveDto().getId()));
+		ActiveStatusDto.setActiveTypeStatusDto(activeTypeStatusService.getActiveTypeStatusById(ActiveStatusDto.getActiveTypeStatusDto().getId()));
+		ActiveStatus ActiveStatus = activeStatusMapper.dtoToEntity(ActiveStatusDto);
+		return activeStatusMapper.entityToDto(activeStatusConnector.createActiveStatus(ActiveStatus));
 	}
 
 	@Override
 	public void deleteACtiveStatus(Long id) {
-		// TODO Auto-generated method stub
-		
+		activeStatusConnector.deleteActiveStatus(id);
 	}
 
 	@Override
 	public ActiveStatusDto getActiveStatusById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return activeStatusMapper.entityToDto(activeStatusConnector.getActiveStatusById(id));
 	}
 
 }

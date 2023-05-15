@@ -12,5 +12,5 @@ public interface ChargeConnector {
 	
 	 List<ChargeDto> getAllCharge();
 	
-
+	 ChargeDto getChargeById(Long id);
 }

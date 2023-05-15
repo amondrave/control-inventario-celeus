@@ -4,9 +4,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.celeus.controlinventario.domain.connector.WorkerConnector;
+import com.celeus.controlinventario.domain.dto.DocumentTypeDto;
 import com.celeus.controlinventario.domain.dto.WorkerDto;
+import com.celeus.controlinventario.domain.service.ChargeService;
+import com.celeus.controlinventario.domain.service.DocumentTypeService;
 import com.celeus.controlinventario.domain.service.WorkerService;
 import com.celeus.controlinventario.persistence.entity.Worker;
 import com.celeus.controlinventario.persistence.mapper.WorkerMapper;
@@ -19,12 +23,19 @@ public class WorkerServiceImpl implements WorkerService {
 	
 	private final WorkerMapper workerMapper;
 	
+	private final ChargeService chargeService;
+	
+	private final DocumentTypeService documentTypeService;
+	
 	
 
-	public WorkerServiceImpl(WorkerConnector workerConnector, WorkerMapper workerMapper) {
+	public WorkerServiceImpl(WorkerConnector workerConnector, WorkerMapper workerMapper
+			, ChargeService chargeService, DocumentTypeService documentTypeService) {
 		super();
 		this.workerConnector = workerConnector;
 		this.workerMapper = workerMapper;
+		this.chargeService = chargeService;
+		this.documentTypeService = documentTypeService;
 	}
 
 	@Override
@@ -34,9 +45,14 @@ public class WorkerServiceImpl implements WorkerService {
 	}
 
 	@Override
+	@Transactional
 	public WorkerDto createWorker(WorkerDto workerDto) {
 		// TODO Auto-generated method stub
+		workerDto.setChargeDto(chargeService.getChargeById(workerDto.getChargeDto().getId()));
+		workerDto.setDocumentTypeDto(documentTypeService.getDocumentTypeById(workerDto.getDocumentTypeDto().getId()));
+		System.out.println("Worker DTO ->>>>>>>> "+workerDto.getDocumentTypeDto().toString());
 		Worker worker = workerMapper.dtoToEntity(workerDto);
+		System.out.println("Worker  ->>>>>>>> "+worker.getDocumentType().toString());
 		return workerMapper.entityToDto(workerConnector.createWorker(worker));
 	}
 
@@ -56,6 +72,12 @@ public class WorkerServiceImpl implements WorkerService {
 					return workerDto;
 				})
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public WorkerDto getWorkedById(Long id) {
+		// TODO Auto-generated method stub
+		return workerMapper.entityToDto(workerConnector.getWorkerById(id));
 	}
 
 }

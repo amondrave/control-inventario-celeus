@@ -39,10 +39,13 @@ public class EvidenceConnectorImpl implements EvidenceConnector {
 	@Override
 	public Evidence getEvidenceById(Long id) {
 		// TODO Auto-generated method stub
-		Evidence evidence = evidenceRepository.getReferenceById(id);
-		if(evidence == null)
-			new NoSuchElementException("No se encontró la evidencia con ID " + id);
-		return evidence;
+		try {
+			Evidence evidence = evidenceRepository.getReferenceById(id);
+			return evidence;
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new NoSuchElementException("No se encontró la evidencia con ID " + id);
+		}
 	}
 
 	@Override
