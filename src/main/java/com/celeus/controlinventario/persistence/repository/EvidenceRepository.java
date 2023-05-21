@@ -11,8 +11,8 @@ import com.celeus.controlinventario.persistence.entity.Maintenance;
 
 public interface EvidenceRepository extends JpaRepository<Evidence, Long>{
 	
-	@Query("SELECT e FROM Evidence e WHERE e.maintenance = :maintenance")
-	List<Evidence> findByMaintenance(@Param("maintenance") Maintenance maintenance);
+	@Query("SELECT e FROM Evidence e WHERE e.maintenance.id = :maintenance")
+	List<Evidence> findByMaintenance(@Param("maintenance") Long maintenance);
 
 
 }

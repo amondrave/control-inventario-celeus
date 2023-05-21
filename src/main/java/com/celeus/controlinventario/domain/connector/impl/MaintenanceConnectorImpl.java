@@ -44,4 +44,10 @@ public class MaintenanceConnectorImpl implements MaintenanceConnector {
 		maintenance.setUpdateDate(LocalDateTime.now());
 	}
 
+	@Override
+	public List<Maintenance> getAllMaintenanceByIdActive(Long idActive) {
+		// TODO Auto-generated method stub
+		return maintenanceRepository.findMaintenanceByActiveId(idActive);
+	}
+
 }

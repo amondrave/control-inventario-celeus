@@ -24,7 +24,7 @@ public class EvidenceConnectorImpl implements EvidenceConnector {
 	}
 
 	@Override
-	public List<Evidence> getAllEvidenceByMaintenance(Maintenance maintenance) {
+	public List<Evidence> getAllEvidenceByMaintenance(Long maintenance) {
 		// TODO Auto-generated method stub
 		return evidenceRepository.findByMaintenance(maintenance);
 	}

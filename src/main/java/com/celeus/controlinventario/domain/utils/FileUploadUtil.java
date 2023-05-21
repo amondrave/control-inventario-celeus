@@ -15,23 +15,16 @@ public class FileUploadUtil {
 
     public static void saveFile(String uploadDir, String fileName, MultipartFile multipartFile) throws IOException {
         Path uploadPath = Paths.get(uploadDir);
-        System.out.println("Prueba : "+uploadPath.toString());
         if (!Files.exists(uploadPath)) {
-        	System.out.println("Algooo");
             Files.createDirectories(uploadPath);
         }
 
         try (InputStream inputStream = multipartFile.getInputStream()) {
-        	System.out.println("Paso 1 ************* : ");
             if (fileName.startsWith("/")) {
-            	System.out.println("Quitar caracter");
                 fileName = fileName.substring(1);
             }
             Path filePath = uploadPath.resolve(fileName);
-            System.out.println("filePath ************* : " +filePath.toString());
-            System.out.println("Paso 2 ************* : ");
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("Paso 3 ************* : ");
         } catch (IOException ex) {
             throw new IOException("Could not save file: " + fileName, ex);
         }

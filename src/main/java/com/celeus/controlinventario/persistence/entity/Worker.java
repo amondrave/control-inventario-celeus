@@ -44,7 +44,7 @@ public class Worker {
 	@Column(name = "identification", nullable = false)
 	private String identification;
 	
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_document_type")
 	private DocumentType documentType;
 	

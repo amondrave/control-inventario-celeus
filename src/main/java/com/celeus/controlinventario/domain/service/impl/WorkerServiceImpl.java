@@ -50,9 +50,8 @@ public class WorkerServiceImpl implements WorkerService {
 		// TODO Auto-generated method stub
 		workerDto.setChargeDto(chargeService.getChargeById(workerDto.getChargeDto().getId()));
 		workerDto.setDocumentTypeDto(documentTypeService.getDocumentTypeById(workerDto.getDocumentTypeDto().getId()));
-		System.out.println("Worker DTO ->>>>>>>> "+workerDto.getDocumentTypeDto().toString());
+
 		Worker worker = workerMapper.dtoToEntity(workerDto);
-		System.out.println("Worker  ->>>>>>>> "+worker.getDocumentType().toString());
 		return workerMapper.entityToDto(workerConnector.createWorker(worker));
 	}
 

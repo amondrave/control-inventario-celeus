@@ -11,6 +11,8 @@ public interface MaintenanceConnector {
 
 	List<Maintenance> getAllMaintenance();
 	
+	List<Maintenance> getAllMaintenanceByIdActive(Long idActive);
+	
 	Maintenance createMaintenance(Maintenance maintenance);
 	
 	Maintenance updateMaintenance(Maintenance maintenance);

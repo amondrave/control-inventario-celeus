@@ -7,7 +7,7 @@ import com.celeus.controlinventario.persistence.entity.Observation;
 
 public interface ObservationConnector {
 	
-	List<Observation> getAllObservationByMaintenance(Maintenance maintenance);
+	List<Observation> getAllObservationByMaintenance(Long maintenanceId);
 	
 	Observation createObservation(Observation observation);
 	

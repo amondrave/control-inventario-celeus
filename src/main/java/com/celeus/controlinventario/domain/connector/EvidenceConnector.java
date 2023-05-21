@@ -7,7 +7,7 @@ import com.celeus.controlinventario.persistence.entity.Maintenance;
 
 public interface EvidenceConnector {
 	
-	List<Evidence> getAllEvidenceByMaintenance(Maintenance maintenance);
+	List<Evidence> getAllEvidenceByMaintenance(Long maintenance);
 	
 	Evidence createEvidence(Evidence evidence);
 	

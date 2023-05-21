@@ -25,9 +25,9 @@ public class ObservationConnectorImpl implements ObservationConnector {
 	}
 
 	@Override
-	public List<Observation> getAllObservationByMaintenance(Maintenance maintenance) {
+	public List<Observation> getAllObservationByMaintenance(Long maintenanceId) {
 		// TODO Auto-generated method stub
-		return observationRepository.findByMaintenance(maintenance);
+		return observationRepository.findByMaintenance(maintenanceId);
 	}
 
 	@Override
