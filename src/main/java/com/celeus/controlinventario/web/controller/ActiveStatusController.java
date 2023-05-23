@@ -54,7 +54,7 @@ public class ActiveStatusController {
 	}
 	
 	@DeleteMapping("delete/{id}")
-	public ResponseEntity delete(Long id) {
+	public ResponseEntity delete(@PathVariable Long id) {
 		activeStatusService.deleteACtiveStatus(id);
 		return new ResponseEntity(HttpStatus.ACCEPTED);
 	}

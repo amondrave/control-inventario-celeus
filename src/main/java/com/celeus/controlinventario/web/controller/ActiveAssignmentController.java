@@ -52,7 +52,7 @@ public class ActiveAssignmentController {
 	}
 	
 	@DeleteMapping("delete/{id}")
-	public ResponseEntity delete(Long id) {
+	public ResponseEntity delete(@PathVariable Long id) {
 		activeAssignmentService.deleteActiveAssignment(id);
 		return new ResponseEntity(HttpStatus.ACCEPTED);
 	}
