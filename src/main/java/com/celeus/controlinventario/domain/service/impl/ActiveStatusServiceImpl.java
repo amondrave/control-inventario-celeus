@@ -40,7 +40,7 @@ public class ActiveStatusServiceImpl implements ActiveStatusService{
 	@Override
 	public List<ActiveStatusDto> getAllActiveStatus() {
 		List<ActiveStatus> list = activeStatusConnector.getAllActiveStatus();
-		if(!list.isEmpty())
+		if( list != null && !list.isEmpty())
 			return mapperList(list);
 		return null;
 	}
@@ -48,7 +48,7 @@ public class ActiveStatusServiceImpl implements ActiveStatusService{
 	@Override
 	public List<ActiveStatusDto> getAllActiveStatusByActive(Long idActive) {
 		List<ActiveStatus> list = activeStatusConnector.getAllActiveStatusByActive(idActive);
-		if(!list.isEmpty())
+		if( list != null && !list.isEmpty())
 			return mapperList(list);
 		return null;
 	}

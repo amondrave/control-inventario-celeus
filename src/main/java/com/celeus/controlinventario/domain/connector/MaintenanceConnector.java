@@ -17,5 +17,6 @@ public interface MaintenanceConnector {
 	
 	Maintenance updateMaintenance(Maintenance maintenance);
 	
+	Maintenance getMaintenanceById(Long id);
 	
 }

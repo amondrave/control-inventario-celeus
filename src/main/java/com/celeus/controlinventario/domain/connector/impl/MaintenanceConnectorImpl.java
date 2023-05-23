@@ -2,12 +2,15 @@ package com.celeus.controlinventario.domain.connector.impl;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Repository;
 
 import com.celeus.controlinventario.domain.connector.MaintenanceConnector;
 import com.celeus.controlinventario.persistence.entity.Maintenance;
 import com.celeus.controlinventario.persistence.repository.MaintenanceRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Repository
 public class MaintenanceConnectorImpl implements MaintenanceConnector {
@@ -48,6 +51,15 @@ public class MaintenanceConnectorImpl implements MaintenanceConnector {
 	public List<Maintenance> getAllMaintenanceByIdActive(Long idActive) {
 		// TODO Auto-generated method stub
 		return maintenanceRepository.findMaintenanceByActiveId(idActive);
+	}
+
+	@Override
+	public Maintenance getMaintenanceById(Long id) {
+		try {
+			return maintenanceRepository.getReferenceById(id);
+		} catch (EntityNotFoundException  e) {
+			throw new NoSuchElementException("No se puedo encontrar el mantenimiento");
+		}
 	}
 
 }
