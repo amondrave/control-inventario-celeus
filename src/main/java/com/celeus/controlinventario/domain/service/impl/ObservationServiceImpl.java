@@ -3,12 +3,14 @@ package com.celeus.controlinventario.domain.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.celeus.controlinventario.domain.connector.ObservationConnector;
 import com.celeus.controlinventario.domain.dto.ObservationDto;
 import com.celeus.controlinventario.domain.service.ObservationService;
 import com.celeus.controlinventario.persistence.entity.Observation;
 import com.celeus.controlinventario.persistence.mapper.ObservationMapper;
-
+@Service
 public class ObservationServiceImpl implements ObservationService{
 	
 	private final ObservationConnector observationConnector;

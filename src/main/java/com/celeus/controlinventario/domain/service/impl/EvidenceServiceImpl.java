@@ -3,12 +3,15 @@ package com.celeus.controlinventario.domain.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.celeus.controlinventario.domain.connector.EvidenceConnector;
 import com.celeus.controlinventario.domain.dto.EvidenceDto;
 import com.celeus.controlinventario.domain.service.EvidenceService;
 import com.celeus.controlinventario.persistence.entity.Evidence;
 import com.celeus.controlinventario.persistence.mapper.EvidenceMapper;
 
+@Service
 public class EvidenceServiceImpl implements EvidenceService {
 	
 	private final EvidenceConnector evidenceConnector;

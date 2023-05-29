@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.celeus.controlinventario.domain.dto.ActiveDto;
 import com.celeus.controlinventario.domain.service.ActiveService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -31,13 +32,17 @@ public class ActiveController {
 		}
 		
 		@PostMapping("/create")
-		public ResponseEntity<ActiveDto> createActive(@RequestPart("body") ActiveDto activeDto,  @RequestPart("image") MultipartFile file) throws IOException{
+		public ResponseEntity<ActiveDto> createActive(@RequestPart("body") String activeDtoString,  @RequestPart("image") MultipartFile file) throws IOException{
+			ObjectMapper objectMapper = new ObjectMapper();
+		    ActiveDto activeDto = objectMapper.readValue(activeDtoString, ActiveDto.class);
 			ActiveDto activeDtoResponse = activeService.saveActive(activeDto, file);
 			return new ResponseEntity<ActiveDto>(activeDtoResponse,HttpStatus.CREATED);
 		}
 		
 		@PostMapping("/update")
-		public ResponseEntity<ActiveDto> updateActive(@RequestBody ActiveDto activeDto,  @RequestParam("image") MultipartFile file) throws IOException{
+		public ResponseEntity<ActiveDto> updateActive(@RequestPart("body") String activeDtoString,  @RequestPart("image") MultipartFile file) throws IOException{
+			ObjectMapper objectMapper = new ObjectMapper();
+		    ActiveDto activeDto = objectMapper.readValue(activeDtoString, ActiveDto.class);
 			ActiveDto activeDtoResponse = activeService.updateActive(activeDto, file);
 			return new ResponseEntity<ActiveDto>(activeDtoResponse,HttpStatus.OK);
 		}

@@ -11,7 +11,7 @@ import com.celeus.controlinventario.persistence.entity.Observation;
 
 public interface ObservationRepository extends JpaRepository<Observation, Long> {
 	
-	@Query("SELECT o FROM Observation o WHERE o.maintenance.id = :maintenance")
+	@Query("SELECT o FROM Observation o WHERE o.maintenance.id = :maintenanceId")
 	List<Observation> findByMaintenance(@Param("maintenanceId") Long maintenanceId);
 
 

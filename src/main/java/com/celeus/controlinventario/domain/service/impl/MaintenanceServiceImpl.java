@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.celeus.controlinventario.domain.connector.MaintenanceConnector;
@@ -26,6 +27,7 @@ import com.celeus.controlinventario.domain.utils.FileUploadUtil;
 import com.celeus.controlinventario.persistence.entity.Maintenance;
 import com.celeus.controlinventario.persistence.mapper.MaintenanceMapper;
 
+@Service
 public class MaintenanceServiceImpl implements MaintenanceService {
 	
 	private final MaintenanceConnector maintenanceConnector;
