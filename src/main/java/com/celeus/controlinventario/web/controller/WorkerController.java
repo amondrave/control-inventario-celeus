@@ -1,5 +1,7 @@
 package com.celeus.controlinventario.web.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,6 +43,12 @@ public class WorkerController {
 	public ResponseEntity<WorkerDto> getWorkerByIdentification(@PathVariable Long id){
 		WorkerDto WorkerDto = workerService.getWorkedById(id);
 		return new ResponseEntity<WorkerDto>(WorkerDto,HttpStatus.OK);
+	}
+	
+	@GetMapping("/findAll/")
+	public ResponseEntity<List<WorkerDto>> getAllWorker(){
+		List<WorkerDto> list = workerService.getAllWorker();
+		return new ResponseEntity<List<WorkerDto>>(list,HttpStatus.ACCEPTED);
 	}
 
 }

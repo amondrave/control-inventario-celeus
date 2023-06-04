@@ -53,6 +53,12 @@ public class ActiveController {
 			return new ResponseEntity<List<ActiveDto>>(activeDtoList,HttpStatus.ACCEPTED);
 		}
 		
+		@GetMapping("/findAll/WithoutAssignment")
+		public ResponseEntity<List<ActiveDto>> getAllActivesWithoutAssignment(){
+			List<ActiveDto> activeDtoList = activeService.getAllActivesNotAssigments();
+			return new ResponseEntity<List<ActiveDto>>(activeDtoList,HttpStatus.ACCEPTED);
+		}
+		
 		@GetMapping("/find/{id}")
 		public ResponseEntity<ActiveDto> getActiveById(@PathVariable("id") Long id){
 			ActiveDto activeDtoResponse = activeService.getActiveById(id);

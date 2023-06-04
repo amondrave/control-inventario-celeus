@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.celeus.controlinventario.domain.service.ActiveAssignmentService;
 
 @RestController
 @RequestMapping("/ActiveAssignment")
+@CrossOrigin(origins = "*")
 public class ActiveAssignmentController {
 
 	private final ActiveAssignmentService activeAssignmentService;

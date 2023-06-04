@@ -12,6 +12,8 @@ public interface ActiveConnector {
 
 	List<Active> getAllActivesEnabled();
 	
+	List<Active> getAllActivesNotAssigments();
+	
 	Active createActive(ActiveDto activeDto);
 	
 	Active updateActive(ActiveDto activeDto);

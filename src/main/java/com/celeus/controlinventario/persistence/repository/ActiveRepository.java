@@ -17,5 +17,10 @@ public interface ActiveRepository extends JpaRepository<Active, Long> {
     
     @Query("SELECT COALESCE(MAX(a.id), 0) + 1 FROM Active a")
     Long getNextId();
+    
+    @Query("SELECT a FROM Active a INNER JOIN ActiveAssignment aa WHERE aa.returnDate IS NOT NULL "
+            + "UNION "
+            + "SELECT a FROM Active a WHERE NOT EXISTS (SELECT aa FROM ActiveAssignment aa WHERE aa.active = a)")
+    List<Active> findActivesWithNonNullReturnDateOrWithoutAssignment();
 	
 }

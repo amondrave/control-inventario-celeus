@@ -10,6 +10,8 @@ import com.celeus.controlinventario.domain.dto.ActiveDto;
 public interface ActiveService {
 	
 	List<ActiveDto> getAllActivesEnabled();
+	
+	List<ActiveDto> getAllActivesNotAssigments();
 
 	ActiveDto saveActive(ActiveDto activeDto, MultipartFile image) throws IOException;
 	

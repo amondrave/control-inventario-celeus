@@ -145,4 +145,11 @@ public class ActiveServiceImpl implements ActiveService {
 		activeConnector.enabledActive(id);		
 	}
 
+	@Override
+	public List<ActiveDto> getAllActivesNotAssigments() {
+		// TODO Auto-generated method stub
+		List<ActiveDto> activeDtos = this.mapperActiveList(activeConnector.getAllActivesNotAssigments());
+		return activeDtos;
+	}
+
 }

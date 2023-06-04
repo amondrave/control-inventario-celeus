@@ -82,4 +82,10 @@ public class ActiveConnectorImpl implements ActiveConnector{
             activeRepository.save(active);
 	}
 
+	@Override
+	public List<Active> getAllActivesNotAssigments() {
+		// TODO Auto-generated method stub
+		return activeRepository.findActivesWithNonNullReturnDateOrWithoutAssignment();
+	}
+
 }
