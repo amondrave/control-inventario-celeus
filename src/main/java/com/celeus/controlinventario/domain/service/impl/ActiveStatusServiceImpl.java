@@ -81,4 +81,13 @@ public class ActiveStatusServiceImpl implements ActiveStatusService{
 		return activeStatusMapper.entityToDto(activeStatusConnector.getActiveStatusById(id));
 	}
 
+	@Override
+	public List<ActiveStatusDto> getByActiveTypeStatus() {
+		// TODO Auto-generated method stub
+		List<ActiveStatus> list = activeStatusConnector.getByActiveTypeStatus();
+		if( list != null && !list.isEmpty())
+			return mapperList(list);
+		return null;
+	}
+
 }

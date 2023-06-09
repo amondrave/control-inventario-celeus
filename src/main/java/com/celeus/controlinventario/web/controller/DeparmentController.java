@@ -27,6 +27,7 @@ public class DeparmentController {
 	@GetMapping("/findAll")
 	public ResponseEntity<List<DeparmentDto>> getAll(){
 		List<DeparmentDto> list = deparmentService.getAllDeparment();
+		System.out.print(list.size());
 		return new ResponseEntity<List<DeparmentDto>>(list,HttpStatus.ACCEPTED);
 	}
 

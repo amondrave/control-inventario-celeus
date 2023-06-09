@@ -33,7 +33,8 @@ public class DeparmentConnectorImpl implements DeparmentConnector{
 	public List<DeparmentDto> getAllDeparment() {
 		// TODO Auto-generated method stub
 		List<Deparment> listDeparments = deparmentRepository.findAll();
-		return null;
+		List<DeparmentDto> response = mapperList(listDeparments);
+		return response;
 	}
 	
 	private List<DeparmentDto> mapperList(List<Deparment> listDeparments){

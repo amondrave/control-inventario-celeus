@@ -10,6 +10,8 @@ public interface ActiveStatusConnector {
 	
 	List<ActiveStatus> getAllActiveStatusByActive(Long activeId);
 	
+	List<ActiveStatus> getByActiveTypeStatus();
+	
 	ActiveStatus createActiveStatus(ActiveStatus activeStatus);
 	
 	ActiveStatus getActiveStatusById(Long id);

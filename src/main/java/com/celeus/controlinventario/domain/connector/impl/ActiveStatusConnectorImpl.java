@@ -61,4 +61,10 @@ public class ActiveStatusConnectorImpl implements ActiveStatusConnector {
 		}
 	}
 
+	@Override
+	public List<ActiveStatus> getByActiveTypeStatus() {
+		// TODO Auto-generated method stub
+		return activeStatusRepository.findActiveStatusByBadCondition();
+	}
+
 }

@@ -41,6 +41,12 @@ public class ActiveStatusController {
 		return new ResponseEntity<>(list,HttpStatus.ACCEPTED);
 	}
 	
+	@GetMapping("/findAll/typeStatus")
+	public ResponseEntity<List<ActiveStatusDto>> getAllByActive(){
+		List<ActiveStatusDto> list = activeStatusService.getByActiveTypeStatus();
+		return new ResponseEntity<>(list,HttpStatus.ACCEPTED);
+	}
+	
 	@GetMapping("/find/{id}")
 	public ResponseEntity<ActiveStatusDto> getActiveStatusById(@PathVariable Long id){
 		ActiveStatusDto activeStatusDto = activeStatusService.getActiveStatusById(id);

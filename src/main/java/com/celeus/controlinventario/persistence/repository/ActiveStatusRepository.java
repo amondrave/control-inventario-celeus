@@ -12,5 +12,8 @@ public interface ActiveStatusRepository extends JpaRepository<ActiveStatus, Long
 	
 	@Query("SELECT a FROM ActiveStatus a WHERE a.active.id = :activeId")
 	List<ActiveStatus> findByActiveId(@Param("activeId") Long activeId);
+	
+	@Query("SELECT a FROM ActiveStatus a WHERE a.activeTypeStatus.id = 3 AND  a.id NOT IN (SELECT lf.activeTStatus.id FROM LeavingFormat lf) ")
+	List<ActiveStatus> findActiveStatusByBadCondition();
 
 }

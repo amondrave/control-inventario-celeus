@@ -10,6 +10,8 @@ public interface ActiveStatusService {
 	
 	List<ActiveStatusDto> getAllActiveStatusByActive(Long idActive);
 	
+	List<ActiveStatusDto> getByActiveTypeStatus();
+	
 	ActiveStatusDto createActiveStatus(ActiveStatusDto ActiveStatusDto);
 	
 	void deleteACtiveStatus(Long id);
