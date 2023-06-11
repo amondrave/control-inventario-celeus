@@ -38,6 +38,15 @@ Si deseas contribuir al desarrollo del sistema de inventario Celeus, sigue estos
 4. Sube tus cambios a la rama: `git push origin feature/nueva-funcionalidad`
 5. Abre un pull request en el repositorio.
 
+## Contribuidores
+Agradecemos a las siguientes personas por su contribución a este proyecto:
+
+- [Angel Yesid Mondragon Rodriguez](https://github.com/amondrave) - Desarrollador 👨‍💻
+
+¡Gracias por tu apoyo y contribución!
+
+
+
 ## Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
 
