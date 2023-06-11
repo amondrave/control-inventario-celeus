@@ -42,4 +42,4 @@ Si deseas contribuir al desarrollo del sistema de inventario Celeus, sigue estos
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
 
 ## Contacto
-Si tienes alguna pregunta o consulta relacionada con el sistema de inventario Celeus, puedes contactarnos en <correo@celeus.com> o visitar nuestro sitio web en [www.celeus.com](https://www.celeus.com).
+Si tienes alguna pregunta o consulta relacionada con el sistema de inventario Celeus, puedes contactarnos en <correo@celeus.com> o visitar nuestro sitio web en [www.celeusgroup.com](https://www.celeusgroup.com).
