@@ -56,6 +56,8 @@ public class ObservationServiceImpl implements ObservationService{
 	private List<ObservationDto> mapperList(List<Observation> list){
 		return list.stream().map(o -> {
 			ObservationDto observationDto = observationMapper.entityToDto(o);
+			observationDto.setUserDto(null);
+			observationDto.setMaintenanceDto(null);
 			return observationDto;
 		})
 				.collect(Collectors.toList());

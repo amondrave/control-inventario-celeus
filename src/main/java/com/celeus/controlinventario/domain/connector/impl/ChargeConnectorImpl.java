@@ -51,7 +51,7 @@ public class ChargeConnectorImpl implements ChargeConnector{
 	public ChargeDto getChargeById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-			return chargeMapper.entityToDto(chargeRepository.getReferenceById(id));
+			return chargeMapper.entityToDto(chargeRepository.getById(id));
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se encontro el cargo");
 		}

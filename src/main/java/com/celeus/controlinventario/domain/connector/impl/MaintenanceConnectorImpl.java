@@ -10,7 +10,9 @@ import com.celeus.controlinventario.domain.connector.MaintenanceConnector;
 import com.celeus.controlinventario.persistence.entity.Maintenance;
 import com.celeus.controlinventario.persistence.repository.MaintenanceRepository;
 
-import jakarta.persistence.EntityNotFoundException;
+
+
+import javax.persistence.EntityNotFoundException;
 
 @Repository
 public class MaintenanceConnectorImpl implements MaintenanceConnector {
@@ -32,6 +34,7 @@ public class MaintenanceConnectorImpl implements MaintenanceConnector {
 	@Override
 	public Maintenance createMaintenance(Maintenance maintenance) {
 		// TODO Auto-generated method stub
+		maintenance.setCreatedDate(LocalDateTime.now());
 		setUpdateDate(maintenance);
 		return maintenanceRepository.saveAndFlush(maintenance);
 	}
@@ -56,8 +59,8 @@ public class MaintenanceConnectorImpl implements MaintenanceConnector {
 	@Override
 	public Maintenance getMaintenanceById(Long id) {
 		try {
-			return maintenanceRepository.getReferenceById(id);
-		} catch (EntityNotFoundException  e) {
+			return maintenanceRepository.getById(id);
+		} catch (EntityNotFoundException e) {
 			throw new NoSuchElementException("No se puedo encontrar el mantenimiento");
 		}
 	}

@@ -32,6 +32,7 @@ public class MaintenanceMapper {
 				.id(maintenance.getId())
 				.maintenanceTypeDto(maintenanceTypeMapper.entityToDto(maintenance.getMaintenanceType()))
 				.userDto(userMapper.entityToDto(maintenance.getUser()))
+				.createdDate(maintenance.getCreatedDate())
 				.build();
 	}
 	

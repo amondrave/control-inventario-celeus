@@ -36,7 +36,7 @@ public class UserConnectorImpl implements UserConnector{
 	@Override
 	public UserDto getUserById(Long id) {
 		try {
-			User user = userRepository.getReferenceById(id);
+			User user = userRepository.getById(id);
 			return userMapper.entityToDto(user);
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se pudo encontrar el usuario. ");

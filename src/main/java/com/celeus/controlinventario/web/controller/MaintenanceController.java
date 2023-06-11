@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.celeus.controlinventario.domain.dto.MaintenanceDto;
 import com.celeus.controlinventario.domain.service.MaintenanceService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -30,9 +31,11 @@ public class MaintenanceController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<MaintenanceDto> create(@RequestPart("body") MaintenanceDto maintenanceDto, @RequestPart("images") MultipartFile[] images) throws IOException{
-		MaintenanceDto response = maintenanceService.create(maintenanceDto, images);
-		return new ResponseEntity<MaintenanceDto>(response,HttpStatus.CREATED);
+	public ResponseEntity<?> create(@RequestPart("body") String maintenanceDto, @RequestPart("images") MultipartFile[] images) throws IOException{
+		ObjectMapper objectMapper = new ObjectMapper();
+		MaintenanceDto maintenanceDtoRequest = objectMapper.readValue(maintenanceDto,MaintenanceDto.class);
+	    maintenanceService.create(maintenanceDtoRequest, images);
+		return new ResponseEntity(HttpStatus.CREATED);
 	}
 	
 	@GetMapping("find/{id}")

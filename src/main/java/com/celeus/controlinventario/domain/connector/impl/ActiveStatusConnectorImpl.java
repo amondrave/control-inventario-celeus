@@ -54,7 +54,7 @@ public class ActiveStatusConnectorImpl implements ActiveStatusConnector {
 	public ActiveStatus getActiveStatusById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-			ActiveStatus activeStatus = activeStatusRepository.getReferenceById(id);
+			ActiveStatus activeStatus = activeStatusRepository.getById(id);
 			return activeStatus;
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se encontró el estaus del activo con ID " + id);

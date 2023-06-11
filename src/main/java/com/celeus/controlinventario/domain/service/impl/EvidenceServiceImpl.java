@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.celeus.controlinventario.domain.connector.EvidenceConnector;
 import com.celeus.controlinventario.domain.dto.EvidenceDto;
 import com.celeus.controlinventario.domain.service.EvidenceService;
+import com.celeus.controlinventario.domain.utils.FileUploadUtil;
 import com.celeus.controlinventario.persistence.entity.Evidence;
 import com.celeus.controlinventario.persistence.mapper.EvidenceMapper;
 
@@ -51,6 +52,9 @@ public class EvidenceServiceImpl implements EvidenceService {
 	private List<EvidenceDto> mapperList(List<Evidence> list){
 		return list.stream().map(e -> {
 			EvidenceDto evidenceDto = evidenceMapper.entityToDto(e);
+			evidenceDto.setImageBase(FileUploadUtil.getImageBaseFormat(evidenceDto.getEvidenceUrl()));
+			evidenceDto.setUserDto(null);
+			evidenceDto.setMaintenanceDto(null);
 			return evidenceDto;
 		})
 				.collect(Collectors.toList());

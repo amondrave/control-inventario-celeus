@@ -64,17 +64,20 @@ public class MaintenanceServiceImpl implements MaintenanceService {
 	}
 
 	@Override
-	public MaintenanceDto create(MaintenanceDto maintenanceDto, MultipartFile[] images) throws IOException {
+	public void create(MaintenanceDto maintenanceDto, MultipartFile[] images) throws IOException {
 		// TODO Auto-generated method stub
 		UserDto userDto = userService.getUserById(maintenanceDto.getUserDto().getId());
 		ActiveDto activeDto = activeService.getActiveById(maintenanceDto.getActiveDto().getId());
 		MaintenanceTypeDto maintenanceTypeDto = maintenanceTypeService.getMaintenanceType(maintenanceDto.getMaintenanceTypeDto().getId());
+		maintenanceDto.setActiveDto(activeDto);
+		maintenanceDto.setMaintenanceTypeDto(maintenanceTypeDto);
+		maintenanceDto.setUserDto(userDto);
 		Maintenance maintenance = maintenanceMapper.dtoToEntity(maintenanceDto);
 		MaintenanceDto maintenanceResponse = maintenanceMapper.entityToDto(maintenanceConnector.createMaintenance(maintenance));
+		maintenanceDto.setId(maintenanceResponse.getId());
 		maintenanceResponse.setListObservation(maintenanceDto.getListObservation());
-		maintenanceDto.setListEvidence(setUpEvidences(maintenanceResponse, images));
+		maintenanceResponse.setListEvidence(setUpEvidences(maintenanceResponse, images));
 		setUpObservation(maintenanceResponse);
-		return maintenanceResponse;
 	}
 	
 	private void setUpObservation(MaintenanceDto maintenanceDto) {

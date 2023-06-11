@@ -35,7 +35,7 @@ public class MaintenanceTypeConnectorImpl implements MaintenanceTypeConnector {
 	@Override
 	public MaintenanceType getMaintenanceTypeById(Long id) {
 		try {
-			return maintenanceTypeRepository.getReferenceById(id);
+			return maintenanceTypeRepository.getById(id);
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se puede encontrar");
 		}

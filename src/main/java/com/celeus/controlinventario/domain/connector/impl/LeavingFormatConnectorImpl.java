@@ -45,7 +45,7 @@ public class LeavingFormatConnectorImpl implements LeavingFormatConnector {
 	public LeavingFormat getLeavingFormatById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-			return leavingFormatRepository.getReferenceById(id);
+			return leavingFormatRepository.getById(id);
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se puede recuperar ese proceso de baja");
 		}

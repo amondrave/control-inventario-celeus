@@ -40,7 +40,7 @@ public class EvidenceConnectorImpl implements EvidenceConnector {
 	public Evidence getEvidenceById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-			Evidence evidence = evidenceRepository.getReferenceById(id);
+			Evidence evidence = evidenceRepository.getById(id);
 			return evidence;
 		} catch (Exception e) {
 			// TODO: handle exception

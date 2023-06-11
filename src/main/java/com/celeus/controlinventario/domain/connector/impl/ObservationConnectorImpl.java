@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 import org.springframework.stereotype.Repository;
 
 import com.celeus.controlinventario.domain.connector.ObservationConnector;
-import com.celeus.controlinventario.persistence.entity.Maintenance;
+
 import com.celeus.controlinventario.persistence.entity.Observation;
 import com.celeus.controlinventario.persistence.repository.ObservationRepository;
 
@@ -46,7 +46,7 @@ public class ObservationConnectorImpl implements ObservationConnector {
 	public Observation getObservationById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-			Observation observation = observationRepository.getReferenceById(id);
+			Observation observation = observationRepository.getById(id);
 			return observation;
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se encontró la observacion con ID " + id);

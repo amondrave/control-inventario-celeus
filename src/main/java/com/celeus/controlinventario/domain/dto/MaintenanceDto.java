@@ -28,6 +28,8 @@ public class MaintenanceDto {
 	private MaintenanceTypeDto maintenanceTypeDto;
 	
 	private UserDto userDto;
+
+	private LocalDateTime createdDate;
 	
 	// Atributos para la proyeccion
 	

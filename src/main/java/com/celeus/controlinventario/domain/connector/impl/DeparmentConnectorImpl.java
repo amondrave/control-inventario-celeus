@@ -51,7 +51,7 @@ public class DeparmentConnectorImpl implements DeparmentConnector{
 	@Override
 	public DeparmentDto getDeparmentById(Long id) {
 		try {
-			return deparmentMapper.entityToDto(deparmentRepository.getReferenceById(id));
+			return deparmentMapper.entityToDto(deparmentRepository.getById(id));
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se pudo encontrar");
 		}

@@ -9,7 +9,7 @@ import com.celeus.controlinventario.domain.dto.MaintenanceDto;
 
 public interface MaintenanceService {
 	
-	MaintenanceDto create(MaintenanceDto maintenanceDto, MultipartFile[] images)  throws IOException;
+	void create(MaintenanceDto maintenanceDto, MultipartFile[] images)  throws IOException;
 	
 	MaintenanceDto getMaintenanceById(Long id);
 	

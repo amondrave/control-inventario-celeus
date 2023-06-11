@@ -27,5 +27,7 @@ public class EvidenceDto {
 	private MaintenanceDto maintenanceDto;
 	
 	private UserDto userDto;
+	
+	private String imageBase;
 
 }

@@ -34,7 +34,7 @@ public class ActiveTypeStatusConnectorImpl implements ActiveTypeStatusConnector 
 	@Override
 	public ActiveTypeStatus getActiveTypeStatusById(Long id) {
 		try {
-			return activeTypeStatusRepository.getReferenceById(id);
+			return activeTypeStatusRepository.getById(id);
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se puede encontrar");
 		}

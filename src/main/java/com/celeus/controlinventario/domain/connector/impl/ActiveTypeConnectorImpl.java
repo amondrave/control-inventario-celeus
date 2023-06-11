@@ -31,7 +31,7 @@ public class ActiveTypeConnectorImpl implements ActiveTypeConnector{
 	public ActiveType findActiveTypeById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-			ActiveType activeType = activeTypeRepository.getReferenceById(id);
+			ActiveType activeType = activeTypeRepository.getById(id);
 			return activeType;
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se encontró el tipo de activo con ID " + id);

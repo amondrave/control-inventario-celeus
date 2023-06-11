@@ -12,13 +12,11 @@ import com.celeus.controlinventario.persistence.entity.Worker;
 public interface WorkerRepository extends JpaRepository<Worker, Long>{
 	
 	Optional<Worker> findByIdentification(String identification);
-	
-	@Query("""
-	        SELECT w
-	        FROM Worker w
-	        WHERE w.identification = :identification AND
-	        w.documentType.id = :documentTypeId
-	        """)
+
+	@Query("SELECT w " +
+			"FROM Worker w " +
+			"WHERE w.identification = :identification " +
+			"AND w.documentType.id = :documentTypeId")
 	Worker findWorkerByIdentificationAndDocumentType(
 	        @Param("identification") String identification, 
 	        @Param("documentTypeId") Long documentTypeId);

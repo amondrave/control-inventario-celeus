@@ -45,7 +45,7 @@ public class ActiveAssignmentConnectorImpl implements ActiveAssignmentConnector 
 	public ActiveAssignment getActiveAssignmentById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-			ActiveAssignment activeAssignment = activeAssignmentRepository.getReferenceById(id);
+			ActiveAssignment activeAssignment = activeAssignmentRepository.getById(id);
 			return activeAssignment;
 		} catch (Exception e) {
 			throw new NoSuchElementException("No se pudo encontrar el prestamo");
